@@ -1,0 +1,102 @@
+integração api facebook geral (curtidas)
+#https://developers.facebook.com/docs/pages/#
+
+
+
+
+integração api pegar valor da api de pagamento do ads
+#https://github.com/facebook/facebook-php-business-sdk#
+
+
+#https://developers.facebook.com/docs/marketing-api/reference/ad-campaign/#
+
+
+https://www.phpgang.com/how-to-get-facebook-page-feed-with-graph-api-using-php-mysql_4021.html
+
+****
+
+usuario teste facebook
+
+luis_qxplxsi_teste@tfbnw.ne
+luis user teste
+S123456
+108206013536288
+
+1279988272085734
+***********
+
+https://developers.facebook.com/tools/explorer/
+https://hackernoon.com/graphapi-get-query-fetch-public-facebook-page-feed-3-step-tutorial-example-access-token-auth-post-d7403c717fbf
+https://developers.facebook.com/docs/platforminsights/page/
+https://developers.facebook.com/apps/2204624902915529/app-review/permissions/
+https://stackoverflow.com/questions/13399269/how-to-get-total-like-share-and-comment-count-for-various-facebook-post-types
+https://github.com/jpryda/facebook-multi-scraper/blob/master/get_fb_data.py
+
+------
+
+https://developers.facebook.com/apps/2204624902915529/marketing-api/tools/
+https://developers.facebook.com/docs/marketing-api/sdks/
+https://github.com/facebook/facebook-php-business-sdk
+https://developers.facebook.com/docs/marketing-api/insights
+https://github.com/facebook/facebook-php-business-sdk/blob/master/src/FacebookAds/Object/Fields/AdAccountFields.php
+
+https://developers.facebook.com/docs/marketing-api/sdks/
+
+https://developers.facebook.com/docs/marketing-apis
+
+https://github.com/keboola/ex-facebook-graph-api/wiki/Sandbox-Ad-Account-Testing-Environment
+
+https://developers.facebook.com/docs/marketing-api/buying-api ***
+
+/**
+valor total investido por periodo --> today_spend
+alcance por 30 dias --> reach
+**/
+
+https://github.com/WilliamGarrow/facebook-ads-marketing-api
+
+//
+
+https://business.facebook.com/adsmanager/manage/accounts?act=258725951253917&business_id=196894060770440
+https://business.facebook.com/adsmanager/manage/campaigns?act=258725951253917&business_id=196894060770440&filter_set
+
+
+
+1040324000
+
+5g_net_virtua_175a
+
+
+msvcr110.dll
+
+https://s3-eu-west-1.amazonaws.com/backupieb1aws/ieb1_master/daily/sistemaw_ieb/sistemaw_ieb_2018-11-19_03h25m.Monday.sql.gz
+
+
+45146932+ItaloLuiz@users.noreply.github.com
+
+https://wa.me/5531993346096?text=45146932+ItaloLuiz@users.noreply.github.com
+
+---
+https://github.com/usmanhalalit/pixie
+
+https://github.com/usmanhalalit/strana
+
+---
+https://mibew.org/
+
+C:/Users/italo/Desktop/projeto/sistemaw_ieb_2018-11-19_03h25m.Monday.sql
+
+20:50
+
+C:\wamp\bin\mysql\mysql5.7.23\bin
+
+mysql -uroot -p sistema_ieb < C:/Users/italo/Desktop/projeto/sistemaw_ieb_2018-11-19_03h25m.Monday.sql
+
+09:10
+
+//// treinamento wilton as 15:00
+
+-----
+
+cartão cnpj
+https://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/cnpjreva_solicitacao2.asp
