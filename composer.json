@@ -1,0 +1,13 @@
+{
+    "name": "name/my_test_php_app",
+    "type": "project",
+    "require": {
+        "facebook/php-business-sdk": "^3.0.0"
+    },
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "some@email.com"
+        }
+    ]
+}
