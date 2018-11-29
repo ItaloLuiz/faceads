@@ -1,0 +1,60 @@
+.centro{float:none;margin:0 auto; display:block;}
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+    color: rgba(119, 119, 119, 1);
+}
+#custom-bootstrap-menu.navbar-default {
+    font-size: 16px;
+    background-color: rgba(248, 248, 248, 1);
+    border-width: 0px;
+    border-radius: 0px;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+    color: rgba(119, 119, 119, 1);
+    background-color: rgba(248, 248, 248, 0);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(51, 51, 51, 1);
+    background-color: rgba(248, 248, 248, 0);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(85, 85, 85, 1);
+    background-color: rgba(231, 231, 231, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+    border-color: #ddd;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+    background-color: #ddd;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+    background-color: #888;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #888;
+}
+
+.btn-sair{font-size:16px;font-weight:bold;position:relative; display:table;}
+
+.home{position:relative;margin-top:60px;}
+
+.panel-widget-topo{background-color:#3498db}
+.panel-widget-topo .panel-heading{border-bottom:solid 2px #333;}
+
+.panel-widget-topo h2{font-size:18px;text-transform:uppercase;color:#2c3e50;
+     padding-bottom:10px;border-bottom:solid 1px #2980b9;margin-top:2px;margin-bottom:4px; line-height: 160%;}
+.panel-widget-topo h2 small{color:#fff; display: block; text-transform: none;}
+
+.panel-widget-topo h4{color:#2c3e50;text-transform: uppercase; font-size:14px; font-weight: bold;}
+
+.panel-widget-topo h4 small{color:#fff; font-size:18px; text-align: right;}
+
+.box-detalhes{border:solid 1px #ccc; }
+
+.btn-new{margin-bottom:10px;}
+
+#table{margin-top:25px;margin-bottom:25px;}
