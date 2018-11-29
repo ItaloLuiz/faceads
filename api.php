@@ -79,7 +79,9 @@ $dados = array(
 'data_final'=>$data_final
 );
 
+
 $insert = QB::table('tbl_log_ads')->insert($dados);
+
 }
 
 if(!$insert){
