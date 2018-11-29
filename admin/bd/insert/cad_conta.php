@@ -16,11 +16,19 @@ $dados = array(
 $insert = QB::table('tbl_contas')->insert($dados);
 
 if(!$insert){
-    header("Location:../../$origem?status=erro");
-    die;
-    exit;
+   echo "<script>swal(
+    'Erro',
+    'Dado não inserido, tente novamente.',
+    'error'
+  )</script>";
+   die;
+   exit;
 }else{
-    header("Location:../../$origem?status=sucesso");
+    echo "<script>swal(
+        'Ok',
+        'Dado inserido com sucesso!',
+        'success'
+      )</script>";
     die;
     exit;
 }

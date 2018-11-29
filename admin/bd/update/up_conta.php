@@ -16,11 +16,19 @@ $dados = array(
 $insert = QB::table('tbl_contas')->where('id_conta','=',$get_id)->update($dados);
 
 if(!$insert){
-    header("Location:../../$origem?id=$get_id&status=erro");
+    echo "<script>swal(
+     'Erro',
+     'Dado não editado, tente novamente.',
+     'error'
+   )</script>";
     die;
     exit;
-}else{
-    header("Location:../../$origem?id=$get_id&status=sucesso");
-    die;
-    exit;
-}
+ }else{
+     echo "<script>swal(
+         'Ok',
+         'Dado editado com sucesso!',
+         'success'
+       )</script>";
+     die;
+     exit;
+ }
