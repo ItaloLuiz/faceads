@@ -1,5 +1,6 @@
 <?php 
 
+include '../../classe_bd/vendor/autoload.php';
 include '../../config/conn.php';
 
 $origem = 'contas.php';
@@ -15,7 +16,6 @@ if(!$del){
     'Dado não apagado, tente novamente.',
     'error'
   )</script>";
-  echo '<script>history.go(0);</script>';
    die;
    exit;
 }else{
@@ -23,8 +23,7 @@ if(!$del){
         'Ok',
         'Dado apagado com sucesso!',
         'success'
-      )</script>";
-      echo '<script>history.go(0);</script>';
+      )</script>";      
     die;
     exit;
 }

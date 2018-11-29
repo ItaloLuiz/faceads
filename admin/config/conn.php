@@ -1,7 +1,4 @@
 <?php 
-// Make sure you have Composer's autoload file included
-require '../../classe_bd/vendor/autoload.php';
-
 // Create a connection, once only.
 $config = array(
             'driver'    => 'mysql', // Db driver

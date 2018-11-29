@@ -1,5 +1,7 @@
 <?php 
 
+
+include '../../classe_bd/vendor/autoload.php';
 include '../../config/conn.php';
 
 $origem = 'nova_conta.php';

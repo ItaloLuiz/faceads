@@ -34,11 +34,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.29.2/sweetalert2.min.js"></script>
 <script>
-  $(document).ready(function(){
-  
-   $('#del').on('click', function(e) {
-   	e.preventDefault();
-  
+  $(document).ready(function(){  
+   $('.apaga').on('click', function(e) {
+   	e.preventDefault();    
      const swalWithBootstrapButtons = swal.mixin({
      confirmButtonClass: 'btn btn-success',
      cancelButtonClass: 'btn btn-danger',
