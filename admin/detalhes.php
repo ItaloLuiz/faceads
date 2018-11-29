@@ -28,7 +28,16 @@ $result_log = $query_log->get();
           <th>data insercao</th>
         </thead>
         <tbody>
-          <?php foreach($result_log as $row){?>
+          <?php
+          $total_gasto   = 0;
+          $total_alcance = 0;
+          
+          foreach($result_log as $row){
+
+            $total_gasto   += $row->spend;
+            $total_alcance += $row->reach;
+            
+            ?>
           <tr>
             <td><?php echo $row->account_id;?></td>
             <td><?php echo $row->campaign_id;?></td>
@@ -42,6 +51,17 @@ $result_log = $query_log->get();
           </tr>
           <?php } ?>
         </tbody>
+        <tfoot>
+        <th colspan="8">
+        <h4>Resumo</h4>
+        </th>
+        <tr>
+         <th>Total Gasto: <strong><?php echo $total_gasto;?></strong></th>
+         <th>Total Alcance: <strong><?php echo $total_alcance;?></strong></th>
+
+        </tr>
+         
+        </tfoot>
       </div>
     </div>
   </div>

@@ -58,8 +58,12 @@ $resultado = json_encode((new AdAccount($account_id))->getInsights(
 $reach = 0;
 $spend = 0;
 foreach($to_array['data'] as $row){
+    /*soma os valores
     $reach += $row['reach'];
-    $spend += $row['spend'];   
+    $spend += $row['spend'];*/
+
+    $reach = $row['reach'];
+    $spend = $row['spend'];   
     
     $account_id    = $row['account_id'];
     $campaign_id   = $row['campaign_id'];
