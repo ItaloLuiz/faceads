@@ -1,4 +1,7 @@
-<?php ob_start(); include 'config/conn2.php';
+<?php ob_start();
+ include 'classe_bd/vendor/autoload.php';
+ include 'config/conn.php';
+ include 'config/config.php';
 
  $query_contas = QB::table('tbl_contas');
  $qtda = $query_contas->count();

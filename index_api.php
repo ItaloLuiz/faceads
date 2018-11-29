@@ -1,6 +1,7 @@
 <?php 
 include 'vendor/autoload.php';
 require 'config.php';
+$account_id = 'act_258725951253917';
 
 use FacebookAds\Api;
 use FacebookAds\Object\AdAccount;
