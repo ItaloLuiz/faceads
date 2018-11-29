@@ -12,14 +12,14 @@
           <div class="col-md-6">
             <div class="form-group">
               <label>Account ID</label>
-              <input type="text" name="account_id" id="account_id" class="form-control" required>
+              <input type="text" name="account_id" id="account_id" class="form-control" placeholder="258725951253917" required>
             </div>
           </div>
           <div class="clearfix"></div>
           <div class="col-md-6">
             <div class="form-group">
               <label>Nome da unidade</label>
-              <input type="text" name="nome_unidade" id="nome_unidade" class="form-control" required>
+              <input type="text" name="nome_unidade" id="nome_unidade" class="form-control" placeholder="ieb" required>
             </div>
           </div>
           <div class="clearfix"></div>
