@@ -1,8 +1,8 @@
 <?php 
 
-
+//pega o id da conta de anuncios
 function  CadLogs($account_id,$base_url){
-    // set post fields
+
 $post = [
     'conta' => $account_id   
 ];
