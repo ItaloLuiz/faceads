@@ -1,30 +1,44 @@
-<?php include 'includes/header.php';?>
+<?php include 'includes/header.php';
+
+$get_conta = $_GET['id'];
+
+$query_log = QB::table('tbl_log_ads')->where('account_id','=',$get_conta);
+$contar = $query_log->count();
+$result_log = $query_log->get();
+
+?>
 <?php include 'includes/menu.php';?>
 <div class="container home">
   <div class="row">
     <div class="col-md-4 btn-new">
-      <a class="btn btn-primary" href="nova_conta.php">Nova Conta</a> 
+      <a class="btn btn-primary" href="contas.php">Voltar</a> 
     </div>
     <div class="clearfix"></div>
     <div class="col-md-12">
       <div class="table-responsive">
         <table id="table" class="table table-borded">
         <thead>
-          <th>ID da Conta</th>
-          <th>Nome da Unidade</th>
-          <th>Detalhes</th>
-          <th>Ação</th>
+          <th>account id</th>
+          <th>campaign id</th>
+          <th>campaign name </th>
+          <th>reach</th>
+          <th>spend</th>
+          <th>data inicio</th>
+          <th>data final</th>
+          <th>data insercao</th>
         </thead>
         <tbody>
-          <?php foreach($result_contas as $row){?>
+          <?php foreach($result_log as $row){?>
           <tr>
             <td><?php echo $row->account_id;?></td>
-            <td><?php echo $row->nome_unidade;?></td>
-            <td><a href="detalhes.php?id=<?php echo $row->account_id;?>">Ver detalhes</a></td>
-            <td>
-             <a class="btn btn-primary btn-sm" href="editar_conta.php?id=<?php echo $row->id_conta;?>">Editar</a>
-             <a id="del" class="btn btn-danger btn-sm apaga" data-id="<?php echo $row->id_conta;?>" href="contas.php?del=<?php echo $row->id_conta;?>">Apagar</a>
-            </td>
+            <td><?php echo $row->campaign_id;?></td>
+            <td><?php echo $row->campaign_name;?></td>
+            <td><?php echo $row->reach;?></td>
+            <td><?php echo $row->spend;?></td>
+            <td><?php echo $row->data_inicio;?></td>
+            <td><?php echo $row->data_final;?></td>
+            <td><?php echo $row->data_insercao;?></td>
+            
           </tr>
           <?php } ?>
         </tbody>
