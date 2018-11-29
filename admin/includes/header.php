@@ -1,11 +1,51 @@
-<?php ob_start();
+<?php session_start(); ob_start();
+ 
+// se não existir as sessoes envio o usuario de volta ao login
+ if(!isset($_SESSION['control_data']) || (!isset($_SESSION['user_id']))   ){
+  header("Location:../login.php?erro=sem-permissao-1");
+  exit;
+  die;
+ }
+
+ //se as sessoes estiverem vazias
+ if(empty($_SESSION['control_data']) || (empty($_SESSION['user_id']))   ){
+  header("Location:../login.php?erro=sem-permissao-2");
+  exit;
+  die;
+ }
+
+ //se clicar em sair destruo as sessoes 
+ if(isset($_GET['sair']) && ($_GET['sair'] == 'logout')){
+   session_destroy();
+   session_unset();  
+   header("Location:../login.php?logout");   
+   die;
+   exit;
+
+ }
+
  include 'classe_bd/vendor/autoload.php';
  include 'config/conn.php';
  include 'config/config.php';
+ include '../funcoes.php';
+
+ $id_user = $_SESSION['user_id'];
+ $query   = QB::table('tbl_login')->where('id_user','=',$id_user);
+ $contar  = $query->count();
+
+ if($contar <=0){
+  header("Location:../login.php?erro=sem-permissao-3");
+  exit;
+  die; 
+ }
+ $result = $query->get();
 
  $query_contas = QB::table('tbl_contas');
  $qtda = $query_contas->count();
  $result_contas = $query_contas->get();
+
+ $query_config = QB::table('tbl_configs');
+ $result_config = $query_config->get();
 
 ?>
 <!DOCTYPE html>

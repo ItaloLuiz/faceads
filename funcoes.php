@@ -19,3 +19,11 @@ if(!$response){
     return 'cadastrado';
 }
 }
+
+//pegar nome de usuario via id
+
+function GetUser($id){
+    $query = QB::table('tbl_login')->where('id_user','=',$id);
+    $result = $query->get();
+    return $result[0]->nome_user;
+}
