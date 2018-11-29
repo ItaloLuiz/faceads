@@ -1,6 +1,5 @@
 <?php ob_start();
-if(!isset($_GET['conta']) || empty($_GET['conta'])){
-    header("Location:index.php");
+if(!isset($_GET['conta']) || empty($_GET['conta'])){    
     exit;
     die;
 }
