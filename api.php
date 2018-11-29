@@ -1,5 +1,5 @@
 <?php ob_start();
-if(!isset($_GET['conta']) || empty($_GET['conta'])){    
+if(!isset($_POST['conta']) || empty($_POST['conta'])){    
     exit;
     die;
 }
@@ -9,7 +9,7 @@ include 'admin/config/conn.php';
 include 'vendor/autoload.php';
 require 'config.php';
 //$account_id = 'act_258725951253917';// esse dado sera informado via get
-$account_id = 'act_'.$_GET['conta'];
+$account_id = 'act_'.$_POST['conta'];
 
 use FacebookAds\Api;
 use FacebookAds\Object\AdAccount;
