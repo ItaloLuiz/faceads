@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `tbl_configs` (
 --
 
 INSERT INTO `tbl_configs` (`id_config`, `app_id`, `app_secret`, `tokken_app`, `base_url`) VALUES
-(1, '2204624902915529', '0a965d1a202b430d2d5aba520e177618', 'EAAfVGDwzhckBAD2royRGO1Lnls4ds7ESHnVUZAtMQKbfBilCk3YbxkDqsRCHkCw38VmyU6y2mBntZA8tIV8sQSuE3dfBVISiwq9cL20WnFjPIiC3k56afvuSPkVF4yc8lJqD02q9ArxadaqGudkD1O5lrIwkf8FLzmswQ1I6p0SVfQlyP7', 'http://localhost/faceads/');
+(1, '', '', '', 'http://localhost/faceads/');
 
 -- --------------------------------------------------------
 
