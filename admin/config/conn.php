@@ -21,3 +21,5 @@ if($conn){
     //echo 'ok';
 }
 
+date_default_timezone_set('America/Sao_Paulo');
+$hoje = date('Y-m-d');

@@ -2,10 +2,25 @@
 
 $get_conta = $_GET['id'];
 
-$query_log = QB::table('tbl_log_ads')->where('account_id','=',$get_conta);
+$query_log = QB::table('tbl_log_ads')
+->where('account_id','=',$get_conta)
+->orderBy('data_insercao','desc');
+
 $contar = $query_log->count();
 $result_log = $query_log->get();
 
+$seleciona_especifico = QB::table('tbl_log_ads')
+ ->selectDistinct(array('tbl_log_ads.reach', 'tbl_log_ads.spend'))
+ ->groupBy('campaign_id');
+
+ $result_especifico = $seleciona_especifico->get();
+ $total_gasto   = 0;
+ $total_alcance = 0;
+  foreach($result_especifico as $row){
+        $total_gasto   += $row->spend;
+        $total_alcance += $row->reach;       
+
+  }
 ?>
 <?php include 'includes/menu.php';?>
 <div class="container home">
@@ -29,15 +44,9 @@ $result_log = $query_log->get();
         </thead>
         <tbody>
           <?php
-          $total_gasto   = 0;
-          $total_alcance = 0;
+        
           
-          foreach($result_log as $row){
-
-            $total_gasto   += $row->spend;
-            $total_alcance += $row->reach;
-            
-            ?>
+          foreach($result_log as $row){?>
           <tr>
             <td><?php echo $row->account_id;?></td>
             <td><?php echo $row->campaign_id;?></td>
@@ -55,6 +64,14 @@ $result_log = $query_log->get();
         <th colspan="8">
         <h4>Resumo</h4>
         </th>
+        <?php
+
+
+
+
+
+
+         ?>
         <tr>
          <th>Total Gasto: <strong><?php echo $total_gasto;?></strong></th>
          <th>Total Alcance: <strong><?php echo $total_alcance;?></strong></th>

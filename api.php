@@ -79,8 +79,16 @@ $dados = array(
 'data_final'=>$data_final
 );
 
+$consulta  = QB::table('tbl_log_ads')->where('account_id','=',$account_id);
+$contar    = $consulta->get();
+
+/*$sql = "INSERT INTO `tbl_log_ads`(`account_id`, `campaign_id`, `campaign_name`, `reach`, `spend`, `data_inicio`, `data_final`, `data_insercao`)
+ VALUES ('$account_id','$campaign_id','$campaign_name','$reach','$spend','$data_inicio','$data_final')";
+
+$insert = QB::query($sql);*/
 
 $insert = QB::table('tbl_log_ads')->insert($dados);
+
 
 }
 

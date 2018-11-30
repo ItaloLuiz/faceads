@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 29, 2018 at 06:08 PM
+-- Generation Time: Nov 30, 2018 at 01:01 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `tbl_contas` (
   `nome_unidade` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_conta`),
   UNIQUE KEY `account_id` (`account_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tbl_contas`
@@ -102,12 +102,12 @@ CREATE TABLE IF NOT EXISTS `tbl_log_ads` (
   `campaign_id` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
   `campaign_name` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
   `reach` decimal(10,0) NOT NULL,
-  `spend` decimal(10,1) NOT NULL,
+  `spend` decimal(10,2) NOT NULL,
   `data_inicio` date NOT NULL,
   `data_final` date NOT NULL,
   `data_insercao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_cadastro`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=84 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

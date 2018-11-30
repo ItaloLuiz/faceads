@@ -27,3 +27,4 @@ function GetUser($id){
     $result = $query->get();
     return $result[0]->nome_user;
 }
+
