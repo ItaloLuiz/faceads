@@ -22,6 +22,8 @@ $api = Api::instance();
 /*
 Os campos possiveis podem ser pegos no seguinte endereço
 https://developers.facebook.com/docs/marketing-api/reference/ads-insights
+
+https://www.quintly.com/blog/facebook-post-reach-explained
 */
 $fields = array(    
     'account_id',
@@ -31,8 +33,24 @@ $fields = array(
     'spend' 
 );
 
+$dia = date('d');
+
+if($dia < '28'){
+    $dia = $dia;
+}elseif($dia > '28'){
+    $dia = '28';
+}else{
+    $dia == '28';
+}
+/*
+facebook trabalha com intervalo máximo de 28 dias, 
+então a ideia abaixo é setar o inicio como 01
+e analisar, se o dia for maior que 28 ele pega 28,
+se menor ele pega o dia atual
+*/
+
 $data_inicio = date('Y-m').'-01';
-$data_final = date('Y-m-d');
+$data_final = date('Y-m').'-'.$dia;
 
 //echo '<pre>';
 //print_r($dados);
@@ -82,10 +100,7 @@ $dados = array(
 $consulta  = QB::table('tbl_log_ads')->where('account_id','=',$account_id);
 $contar    = $consulta->get();
 
-/*$sql = "INSERT INTO `tbl_log_ads`(`account_id`, `campaign_id`, `campaign_name`, `reach`, `spend`, `data_inicio`, `data_final`, `data_insercao`)
- VALUES ('$account_id','$campaign_id','$campaign_name','$reach','$spend','$data_inicio','$data_final')";
 
-$insert = QB::query($sql);*/
 
 $insert = QB::table('tbl_log_ads')->insert($dados);
 
