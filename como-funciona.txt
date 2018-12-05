@@ -1,0 +1,38 @@
+1º Crio um app no facebook
+2º Configuro o app e pego os dados do mesmo(app id,app_secret)
+3º Gero um token para acesso
+4º Baixo o facebook/php-business-sdk
+5º Configuro os dados básicos de acesso ao sdk
+ --> para ter acesso é necessário configurar: app id,app_secret,token e id da conta de anúncios(Ex: act_123456789)
+6º Com essas informações em mãos é preciso apenas usar a api, informando de quais campos que obter dados 
+7º Para colocar o app em produção é necessário configurar uma url, de preferência com https, enviar o mesmo para 
+análise do facebook, o app precisa de acesso a api de marketing com permissão de leitura (ads_read).
+
+## Como o sistema funciona
+
+É necessário cadastrar as contas de anúncios de cada unidade em um banco de dados, sendo preciso apenas dois dados
+o id da conta e o nome da conta(apenas para facilitar o uso, a api precisa apenas do id).
+
+Para cadastrar os relatórios de cada conta basta acessar a página: http://localhost/faceads/contas.php, essa página
+faz uso da função CadLogs() que usa o id da conta para fazer uma chamada para o arquivo api.php.
+
+O arquivo api.php recebe via post o id da conta e pesquisa no facebook pelos dados, encontrando resultado
+faz o cadastro das informações no banco de dados, na tabela: tbl_log_ads .
+
+Caso já exista dados de uma campanha(cada conta pode ter várias campanhas) os dados de alcance e gasto são
+atualizados.
+
+## Acesso ao admin
+
+usuario: email@email.com
+senha: minhasenha123
+
+## Bibliotecas e/ou api utilizadas
+
+Para o banco de dados:
+  -- https://github.com/usmanhalalit/pixie
+
+Para comunicação com facebook
+  -- facebook/php-business-sdk 3.0.0
+
+
