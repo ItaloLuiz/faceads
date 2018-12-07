@@ -7,7 +7,7 @@
     </div>
     <div class="clearfix"></div>
     <div class="col-md-12">
-      <div class="table-responsive">
+      <div class="table-responsive2">
         <table id="table" class="table table-borded">
         <thead>
           <th>ID da Conta</th>
@@ -36,6 +36,8 @@
 <?php include 'includes/footer.php';?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.29.2/sweetalert2.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
 <script>
   $(document).ready(function(){  
    $('.apaga').on('click', function(e) {
@@ -76,4 +78,15 @@
   
    });
   });
+</script>
+<script>
+$(document).ready(function() {
+    $('#table').DataTable(
+      {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"
+        }
+    }
+    );
+} );
 </script>
