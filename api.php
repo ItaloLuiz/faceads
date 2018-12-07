@@ -8,7 +8,7 @@ include 'admin/config/conn.php';
 
 include 'vendor/autoload.php';
 require 'config.php';
-//$account_id = 'act_258725951253917';// esse dado sera informado via get
+
 $account_id = 'act_'.$_POST['conta'];
 
 use FacebookAds\Api;
