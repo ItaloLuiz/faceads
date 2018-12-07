@@ -20,7 +20,7 @@
           <tr>
             <td><?php echo $row->account_id;?></td>
             <td><?php echo $row->nome_unidade;?></td>
-            <td><a href="detalhes.php?id=<?php echo $row->account_id;?>">Ver detalhes</a></td>
+            <td><a href="detalhes.php?id=<?php echo $row->account_id;?>&N=<?php echo $row->nome_unidade;?>">Ver detalhes</a></td>
             <td>
              <a class="btn btn-primary btn-sm" href="editar_conta.php?id=<?php echo $row->id_conta;?>">Editar</a>
              <a id="del" class="btn btn-danger btn-sm apaga" data-id="<?php echo $row->id_conta;?>" href="contas.php?del=<?php echo $row->id_conta;?>">Apagar</a>

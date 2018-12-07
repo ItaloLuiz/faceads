@@ -1,8 +1,16 @@
 <?php ob_start();
-if(!isset($_POST['conta']) || empty($_POST['conta'])){    
+if(!isset($_POST['conta']) || empty($_POST['conta'])){ 
+    return 'informe uma conta';   
     exit;
     die;
 }
+
+if(empty($_POST['dt_ini']) || empty($_POST['dt_fim'])){
+    return 'Informe a data de inicio e a data de fim, exemplo: inicio 2018-12-01 , fim = 2018-12-28';
+    exit();
+    die();
+  }
+
 include 'admin/classe_bd/vendor/autoload.php';
 include 'admin/config/conn.php';
 
@@ -31,8 +39,11 @@ $fields = array(
     'spend' 
 );
 
-$data_inicio = date('Y-m').'-01';
-$data_final = date('Y-m-d');
+/*$data_inicio = date('Y-m').'-01';
+$data_final = date('Y-m-d');*/
+
+$data_inicio = $_POST['dt_ini'];
+$data_final  = $_POST['dt_fim'];
 
 //echo '<pre>';
 //print_r($dados);
@@ -67,7 +78,9 @@ foreach($to_array['data'] as $row){
     
     $account_id    = $row['account_id'];
     $campaign_id   = $row['campaign_id'];
-    $campaign_name = $row['campaign_name'];    
+    $campaign_name = $row['campaign_name'];   
+    
+    $data_insercao = date('Y-m-d H:i:s');
 
 $dados = array(
 'account_id'=>$account_id,
@@ -79,6 +92,14 @@ $dados = array(
 'data_final'=>$data_final
 );
 
+$dataUpdate = array(
+    'campaign_id'=>$campaign_id, 
+    'campaign_name'=>$campaign_name,     
+    'reach'=>$reach,
+    'spend'=>$spend,
+    'data_insercao'=>$data_insercao
+);
+
 $consulta  = QB::table('tbl_log_ads')->where('account_id','=',$account_id);
 $contar    = $consulta->get();
 
@@ -87,14 +108,15 @@ $contar    = $consulta->get();
 
 $insert = QB::query($sql);*/
 
-$insert = QB::table('tbl_log_ads')->insert($dados);
+
+$insertId = QB::table('tbl_log_ads')->onDuplicateKeyUpdate($dataUpdate)->insert($dados);
 
 
 }
 
-if(!$insert){
-    echo 'erro';
+if(!@$insert){
+    echo 'erro API<br>';
 }else{
-    echo 'ok';
+    echo 'ok<br>';
 }
 

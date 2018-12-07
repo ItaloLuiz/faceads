@@ -65,8 +65,11 @@ $seleciona_especifico = QB::table('tbl_log_ads')
      <div class="row">
       <div class="col-md-12">
         <div class="panel">
-         <div class="panel-body">
-         <strong>Dados do mês atual: <?php echo date('Y-m-d');?></strong>
+        
+         <div class="panel-body">    
+         <span><?php echo $_GET['N'];?> - </span>     
+        <span> <strong>Dados do mês : <?php echo date('Y-m-d');?></strong></span>
+        
          </div>
         </div>        
       </div>
