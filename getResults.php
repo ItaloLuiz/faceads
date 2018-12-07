@@ -3,6 +3,12 @@
  include 'admin/config/conn.php';
  include 'funcoes.php';
 
+ if(!isset($_GET['id']) || empty($_GET['id'])){
+       echo '[{"erro":"informe o id de uma campanha"}]';
+       exit();
+       die();
+ }
+
  //caso queira setar uma data estática
 $dt_primeiro_dia = date('Y-m').'-01';
 
@@ -12,6 +18,14 @@ $dt_primeiro_dia = date('Y-m').'-01';
  ->selectDistinct(array('tbl_log_ads.reach', 'tbl_log_ads.spend'))
  ->where('account_id','=',$get_conta)
  ->where('data_inicio','=',$dt_primeiro_dia);
+
+ $contar = $seleciona_especifico_mes->count();
+
+ if($contar <=0){
+      echo '[{"erro":"campanha não encontrada"}]';
+      exit();
+      die();
+ }
 
  $result_especifico_mes = $seleciona_especifico_mes->get();
 
