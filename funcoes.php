@@ -1,10 +1,12 @@
 <?php 
 
 //pega o id da conta de anuncios
-function  CadLogs($account_id,$base_url){
+function  CadLogs($account_id,$base_url,$data_ini,$data_fim){
 
 $post = [
-    'conta' => $account_id   
+    'conta' => $account_id,
+    'data_ini'=>$data_ini,   
+    'data_fim'=>$data_fim
 ];
 
 $ch = curl_init(''.$base_url.'api.php');
@@ -31,5 +33,14 @@ function GetUser($id){
     $query = QB::table('tbl_login')->where('id_user','=',$id);
     $result = $query->get();
     return $result[0]->nome_user;
+}
+
+function DelLogs($cod){
+    $query = QB::table('sistema_face')->where('campaign_id','=',$cod)->delete();
+    if(!$query){
+        return 'erro ao apagar';        
+    }else{
+        return 'apagado com sucesso';
+    }
 }
 
