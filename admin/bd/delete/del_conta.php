@@ -2,6 +2,7 @@
 
 include '../../classe_bd/vendor/autoload.php';
 include '../../config/conn.php';
+include '../../../funcoes.php';
 
 $origem = 'contas.php';
 
@@ -19,6 +20,7 @@ if(!$del){
    die;
    exit;
 }else{
+  DelLogs($get_del);
     echo "<script>swal(
         'Ok',
         'Dado apagado com sucesso!',
