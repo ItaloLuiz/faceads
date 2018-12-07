@@ -1,0 +1,13 @@
+## COMO FUNCIONA
+
+1º Cadastre as contas de anúncios no admin
+2º Acesse a página contas.php(fora do admin), informe uma data de inicio e final, como exemplo abaixo.
+  --> http://localhost/faceads/contas.php?dt_ini=2018-12-01&dt_fim=2018-12-07
+3º O sistema faz um loop para cadastrar as campanhas de cada conta, levando em consideração a data acima especificada
+4º Para listas todas as contas acesse:
+  --> http://localhost/faceads/getAccounts.php
+5º Para ter acesso aos dados de uma conta especifica acesse: (informe o id da conta)
+  --> http://localhost/faceads/getResults.php?id=258732684586577
+  --> Este arquivo sempre vai pegar o primeiro dia do mês atual
+
+
