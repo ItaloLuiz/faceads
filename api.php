@@ -1,4 +1,4 @@
-<?php ob_start();
+<?php session_start(); ob_start();
 if(!isset($_POST['conta']) || empty($_POST['conta'])){ 
     return 'informe uma conta';   
     exit;
@@ -19,6 +19,11 @@ require 'config.php';
 
 $account_id = 'act_'.$_POST['conta'];
 
+/*$consulta1  = QB::table('tbl_log_ads')->select('data_insercao');
+$result_1   = $consulta1->get();
+$data_insercao_1 = $result_1[0]->data_insercao;
+$secao = $_SESSION['testa'] = $data_insercao_1;*/ 
+
 use FacebookAds\Api;
 use FacebookAds\Object\AdAccount;
 use FacebookAds\Object\Fields\AdAccountFields;
@@ -36,7 +41,10 @@ $fields = array(
     'campaign_id',    
     'campaign_name',      
     'reach',
-    'spend' 
+    'spend',
+    'actions',
+    'action_values',
+    'clicks' 
 );
 
 /*$data_inicio = date('Y-m').'-01';
@@ -53,70 +61,91 @@ $params = array(
     'time_range' => array('since' => ''.$data_inicio.'','until' => ''.$data_final.''),
   );
 
-$resultado = json_encode((new AdAccount($account_id))->getInsights(
-    $fields,
-    $params
-  )->getResponse()->getContent(), JSON_PRETTY_PRINT);
-
-  //echo $resultado;
-
-  $to_array = json_decode($resultado,true);
-  $qtda = count($to_array);
-
-  //echo '<pre>';
-//print_r($to_array);
-
-$reach = 0;
-$spend = 0;
-foreach($to_array['data'] as $row){
-    /*soma os valores
-    $reach += $row['reach'];
-    $spend += $row['spend'];*/
-
-    $reach = $row['reach'];
-    $spend = $row['spend'];   
+  try {
+    $resultado = json_encode((new AdAccount($account_id))->getInsights(
+        $fields,
+        $params
+      )->getResponse()->getContent(), JSON_PRETTY_PRINT);
     
-    $account_id    = $row['account_id'];
-    $campaign_id   = $row['campaign_id'];
-    $campaign_name = $row['campaign_name'];   
+      //echo $resultado;
     
-    $data_insercao = date('Y-m-d H:i:s');
+      $to_array = json_decode($resultado,true);
+      $qtda = count($to_array);
+    
+   
+    
+    $reach = 0;
+    $spend = 0;
+    foreach($to_array['data'] as $row){
+        /*soma os valores
+        $reach += $row['reach'];
+        $spend += $row['spend'];*/
+    
+        $reach = $row['reach'];
+        $spend = $row['spend'];   
+        
+        $account_id    = $row['account_id'];
+        $campaign_id   = $row['campaign_id'];
+        $campaign_name = $row['campaign_name'];   
+        $actions = json_encode($row['actions']);
+        
+        $data_insercao = date('Y-m-d H:i:s');
 
-$dados = array(
-'account_id'=>$account_id,
-'campaign_id'=>$campaign_id, 
-'campaign_name'=>$campaign_name,     
-'reach'=>$reach,
-'spend'=>$spend,
-'data_inicio'=>$data_inicio,
-'data_final'=>$data_final
-);
-
-$dataUpdate = array(
+    
+    $dados = array(
+    'account_id'=>$account_id,
     'campaign_id'=>$campaign_id, 
     'campaign_name'=>$campaign_name,     
     'reach'=>$reach,
     'spend'=>$spend,
-    'data_insercao'=>$data_insercao
-);
+    'actions'=>$actions,
+    'data_inicio'=>$data_inicio,
+    'data_final'=>$data_final
+    );
+    
+    $dataUpdate = array(
+        'campaign_id'=>$campaign_id, 
+        'campaign_name'=>$campaign_name,     
+        'reach'=>$reach,
+        'spend'=>$spend,
+        'actions'=>$actions,
+        'data_insercao'=>$data_insercao
+    );
+    
+ 
 
-$consulta  = QB::table('tbl_log_ads')->where('account_id','=',$account_id);
-$contar    = $consulta->get();
+  
+    
+    
+    $insertId = QB::table('tbl_log_ads')->onDuplicateKeyUpdate($dataUpdate)->insert($dados);
+    
+    
+    }
+    
+    if(!@$insert){//pode ser um erro ou pode ter sido um update, e ainda assim retornar erro
 
-/*$sql = "INSERT INTO `tbl_log_ads`(`account_id`, `campaign_id`, `campaign_name`, `reach`, `spend`, `data_inicio`, `data_final`, `data_insercao`)
- VALUES ('$account_id','$campaign_id','$campaign_name','$reach','$spend','$data_inicio','$data_final')";
+        /*$consulta  = QB::table('tbl_log_ads')->select('data_insercao');
+        $result   = $consulta->get();
+        $data_insercao = $result[0]->data_insercao;
+      
 
-$insert = QB::query($sql);*/
+              
+        if( strtotime($secao) < strtotime($data_insercao)){
+         echo 'Dados atualizados<br>';
+         
+        }*/
+        echo 'update<br>';
+        
+
+    }else{
+        echo 'ok<br>';
+    }
+   
+  } catch (\Throwable $th) {
+      //throw $th;
+      echo '<br>Erro na chamada a API => '.$th->getMessage().'<br>';
+
+  }
 
 
-$insertId = QB::table('tbl_log_ads')->onDuplicateKeyUpdate($dataUpdate)->insert($dados);
-
-
-}
-
-if(!@$insert){
-    echo 'erro API<br>';
-}else{
-    echo 'ok<br>';
-}
 
