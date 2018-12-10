@@ -50,3 +50,14 @@ function DelLogs($get_del){
 
 }
 
+
+function DataBr($data){
+    $date = date_create($data);
+    return date_format($date,"d/m/Y");
+}
+
+function GetUnidade($get_account_id){
+    $query = QB::table('tbl_contas')->where('account_id','=',$get_account_id);
+    $result = $query->get();
+    return $result[0]->nome_unidade;
+}

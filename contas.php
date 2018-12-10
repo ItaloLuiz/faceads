@@ -10,7 +10,7 @@
    die();
  }
 
- //http://localhost/faceads/contas.php?dt_ini=2018-12-01&dt_fim=2018-12-07
+ //http://localhost/faceads/contas.php?dt_ini=2018-12-01&dt_fim=2018-12-10
  //select * from tbl_log_ads where data_inicio='2018-12-01' AND account_id='378016222658222'
  
  $data_ini = $_GET['dt_ini'];
