@@ -68,7 +68,7 @@ $seleciona_especifico = QB::table('tbl_log_ads')
         
          <div class="panel-body">    
          <span><?php echo $_GET['N'];?> - </span>     
-        <span> <strong>Dados do mês : <?php echo date('Y-m-d');?></strong></span>
+        <span> <strong>Dados do mês : <?php echo dataBr($dt_primeiro_dia);?></strong></span>
         
          </div>
         </div>        
@@ -103,6 +103,7 @@ $seleciona_especifico = QB::table('tbl_log_ads')
           <th>campaign name </th>
           <th>reach</th>
           <th>spend</th>
+          <th>Dados extras</th>
           <th>data inicio</th>
           <th>data final</th>
           <th>data insercao</th>
@@ -118,6 +119,7 @@ $seleciona_especifico = QB::table('tbl_log_ads')
             <td><?php echo $row->campaign_name;?></td>
             <td><?php echo $row->reach;?></td>
             <td><?php echo $row->spend;?></td>
+            <td><a href="extras.php?account_id=<?php echo $row->account_id;?>&a_name=<?php echo $row->campaign_name;?>&c_id=<?php echo $row->campaign_id;?>&dt_ini=<?php echo $row->data_inicio;?>&gasto=<?php echo $total_gasto_mes;?>">Extras</a></td>
             <td><?php echo $row->data_inicio;?></td>
             <td><?php echo $row->data_final;?></td>
             <td><?php echo $row->data_insercao;?></td>
@@ -126,7 +128,7 @@ $seleciona_especifico = QB::table('tbl_log_ads')
           <?php } ?>
         </tbody>
         <tfoot>
-        <th colspan="8">
+        <th colspan="9">
         <h4>Resumo</h4>
         </th>
         <?php
