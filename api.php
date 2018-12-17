@@ -35,6 +35,7 @@ $api = Api::instance();
 /*
 Os campos possiveis podem ser pegos no seguinte endereço
 https://developers.facebook.com/docs/marketing-api/reference/ads-insights
+https://developers.facebook.com/docs/marketing-api/insights/parameters
 */
 $fields = array(    
     'account_id',
@@ -109,6 +110,7 @@ $params = array(
         'reach'=>$reach,
         'spend'=>$spend,
         'actions'=>$actions,
+        'data_final'=>$data_final,
         'data_insercao'=>$data_insercao
     );
     

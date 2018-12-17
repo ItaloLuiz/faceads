@@ -22,8 +22,8 @@
             <td><?php echo $row->nome_unidade;?></td>
             <td><a href="detalhes.php?id=<?php echo $row->account_id;?>&N=<?php echo $row->nome_unidade;?>">Ver detalhes</a></td>
             <td>
-             <a class="btn btn-primary btn-sm" href="editar_conta.php?id=<?php echo $row->id_conta;?>">Editar</a>
-             <a id="del" class="btn btn-danger btn-sm apaga" data-id="<?php echo $row->id_conta;?>" href="contas.php?del=<?php echo $row->id_conta;?>">Apagar</a>
+              <a class="btn btn-primary btn-sm" href="editar_conta.php?id=<?php echo $row->id_conta;?>">Editar</a>
+              <a id="del" class="btn btn-danger btn-sm apaga" data-id="<?php echo $row->id_conta;?>" href="contas.php?del=<?php echo $row->id_conta;?>">Apagar</a>
             </td>
           </tr>
           <?php } ?>
@@ -80,13 +80,13 @@
   });
 </script>
 <script>
-$(document).ready(function() {
-    $('#table').DataTable(
-      {
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"
-        }
-    }
-    );
-} );
+  $(document).ready(function() {
+      $('#table').DataTable(
+        {
+          "language": {
+              "url": "pt-BR.json"
+          }
+      }
+      );
+  } );
 </script>

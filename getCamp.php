@@ -4,7 +4,7 @@
  include 'funcoes.php';
 
  if(!isset($_GET['id']) || empty($_GET['id'])){
-       echo '[{"erro":"informe o id de uma conta de anúncio"}]';
+       echo '[{"erro":"informe o id da campanha"}]';
        exit();
        die();
  }
@@ -12,22 +12,24 @@
  //caso queira setar uma data estática
 $dt_primeiro_dia = date('Y-m').'-01';
 
- $get_conta = $_GET['id'];
+ $get_camp = $_GET['id'];
 
  $seleciona_especifico_mes = QB::table('tbl_log_ads')
- ->selectDistinct(array('tbl_log_ads.reach', 'tbl_log_ads.spend'))
- ->where('account_id','=',$get_conta)
+ ->selectDistinct(array('tbl_log_ads.reach', 'tbl_log_ads.spend','tbl_log_ads.account_id'))
+ ->where('campaign_id','=',$get_camp)
  ->where('data_inicio','=',$dt_primeiro_dia);
 
  $contar = $seleciona_especifico_mes->count();
 
  if($contar <=0){
-      echo '[{"erro":"conta não encontrada"}]';
+      echo '[{"erro":"campanha não encontrada"}]';
       exit();
       die();
  }
 
  $result_especifico_mes = $seleciona_especifico_mes->get();
+ 
+ $account_id = $result_especifico_mes[0]->account_id;
 
  $total_gasto_mes   = 0;
  $total_alcance_mes = 0;
@@ -37,7 +39,7 @@ $dt_primeiro_dia = date('Y-m').'-01';
 
   }
 
- $saida = '[{"account_id":"'.$get_conta.'","Total gasto":"'.$total_gasto_mes.'","Total alcance":"'.$total_alcance_mes.'","data_inicio":"'.$dt_primeiro_dia.'"}]';
+ $saida = '[{"account_id":"'.$account_id.'", "campaign_id":"'.$get_camp.'","Total gasto":"'.$total_gasto_mes.'","Total alcance":"'.$total_alcance_mes.'", "data_inicio":"'.$dt_primeiro_dia.'"}]';
  echo $saida;
 
  exit;
