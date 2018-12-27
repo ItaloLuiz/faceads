@@ -22,11 +22,27 @@ if($conn){
 //echo 'ok';
 }
 
+$isso  = array('IEB','OralDents',' ','-','Oraldents---','---');
+$por   = array('','','','','','','');
+
+$unidade = str_replace($isso,$por,$_GET['unidade']);
+
+
+
 date_default_timezone_set('America/Sao_Paulo');
 $hoje = date('Y-m-d');;
 
-$query_contas = QB::table('tbl_unidade_atendimento')->select('chave','nm_unidade_atendimento');
- $qtda = $query_contas->count();
+ /*$query_contas = QB::table('tbl_unidade_atendimento')
+ ->select('chave','nm_unidade_atendimento')
+ ->where('nm_unidade_atendimento','LIKE', '%$unidade%');*/ 
+ 
+ $sql = "SELECT chave,nm_unidade_atendimento FROM tbl_unidade_atendimento WHERE nm_unidade_atendimento LIKE '%$unidade%'";
+ 
+ 
+ $query_contas = QB::query($sql);
+ 
+ 
+ //$qtda = $query_contas->count();
  $result_contas = $query_contas->get();
 
  $to_json = json_encode($result_contas);

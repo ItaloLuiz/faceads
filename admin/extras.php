@@ -1,7 +1,8 @@
 <?php
   include 'includes/header.php';
   
-  $dt_primeiro_dia = date('Y-m').'-01';
+  //$dt_primeiro_dia = date('Y-m').'-01';
+  $dt_primeiro_dia = '2018-11-01';
   
   $get_account_id = $_GET['account_id'];
   $nome_unidade = GetUnidade($get_account_id);
@@ -19,6 +20,12 @@
   $result_log = $query_log->get();
   
   $actions = $result_log[0]->actions;  
+
+  $impressoes = $result_log[0]->impressions;
+  $clicks = $result_log[0]->clicks;
+
+
+
   include 'includes/menu.php';
   ?>
 <div class="container home">
@@ -31,14 +38,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <!--<div class="panel panel-info">
-        <div class="panel-heading">
-         <h4>Unidade</h4>
-         <h5><?php echo $nome_unidade;?></b></h5>
-        </div>
-        </div>-->
+    
       <!-- Apply any bg-* class to to the info-box to color it -->
-      <div class="info-box bg-green">
+      <div class="info-box bg-yellow">
         <span class="info-box-icon"><i class="fa fa-building-o"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Unidade</span>
@@ -49,15 +51,9 @@
       </div>
       <!-- /.info-box -->
     </div>
-    <div class="col-md-4">
-      <!--<div class="panel panel-info">
-        <div class="panel-heading">
-         <h4>Campanha</h4>
-         <h5><b><?php echo $get_a_name;?></b> -  Data: <b><?php echo DataBr($dt_primeiro_dia);?></b></h5>
-        </div>
-        </div>-->
-      <!-- Apply any bg-* class to to the info-box to color it -->
-      <div class="info-box bg-green">
+    <div class="col-md-8">
+     
+      <div class="info-box bg-yellow">
         <span class="info-box-icon"><i class="fa fa-bookmark"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Campanha</span>
@@ -67,31 +63,52 @@
       </div>
       <!-- /.info-box -->
     </div>
-    <div class="col-md-4">
-      <!--<div class="panel panel-danger">
-        <div class="panel-heading">
-         <h4>Total Gasto</h4>
-         <h5>R$ <?php echo $total_gasto_mes;?></h5>
-        </div>
-        </div>-->
-      <!-- Apply any bg-* class to to the info-box to color it -->
-      <div class="info-box bg-green">
+
+<div class="clearfix"></div>
+
+   <!-- inicia box-->  
+    <div class="col-md-4">  
+      <div class="info-box bg-red">
         <span class="info-box-icon"><i class="fa fa-money"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Total Gasto</span>
-          <span class="info-box-number">R$ <?php echo $total_gasto_mes;?></span>
-          <!-- The progress section is optional -->
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
+          <span class="info-box-number">R$ <?php echo $total_gasto_mes;?></span>        
+        </div>        
+      </div>      
     </div>
-    <!-- box lte--> 
-    <!-- box lte-->
+    <!-- fecha box--> 
+
+    <!-- inicia box-->  
+       <div class="col-md-4">  
+      <div class="info-box bg-green">
+        <span class="info-box-icon"><i class="fa fa-line-chart"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Impressoes</span>
+          <span class="info-box-number"><?php echo  $impressoes;?></span>        
+        </div>        
+      </div>      
+    </div>
+    <!-- fecha box--> 
+
+       <!-- inicia box-->  
+       <div class="col-md-4">  
+      <div class="info-box bg-navy">
+        <span class="info-box-icon"><i class="fa fa-line-chart"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Clicks</span>
+          <span class="info-box-number"><?php echo $clicks;?></span>        
+        </div>        
+      </div>      
+    </div>
+    <!-- fecha box--> 
+
     <div class="col-md-12">
     </div>
     <?php  
       $to_array =  json_decode($actions,true);
+      /*echo '<pre>';
+      print_r($to_array);
+      echo '</pre>';*/
       foreach($to_array as $key => $row){ 
       
           switch($row['action_type']){
@@ -148,18 +165,35 @@
               $icone = 'fa-line-chart';
               $classe = 'bg-blue';
               break;
+
+              case 'landing_page_view';
+              $tipo = 'Visualização Landpage';
+              $icone = 'fa-line-chart';
+              $classe = 'bg-blue';
+              break;
+
+              case 'offsite_conversion.fb_pixel_complete_registration';
+              $tipo = 'Conversão FB pixel ';
+              $icone = 'fa-line-chart';
+              $classe = 'bg-blue';
+              break;
+
+              default; 
+              $tipo = 'like';
+              $icone = 'fa-line-chart';
+              $classe = 'bg-blue';
           }
       
          //print_r($row);  
         
-         $box = '<div class="col-md-4">';
+         /*$box = '<div class="col-md-4">';
           $box .= '<div class="panel panel-primary">';
            $box .= '<div class="panel-heading">';
             $box .= '<h5>'.$tipo.'</h5>';
             $box .= '<h3><b>'.$row['value'].'</b></h3>';
            $box .= '</div>';
           $box .= '</div>';
-         $box .= '</div>';
+         $box .= '</div>';*/
       
          //echo $box;
          
