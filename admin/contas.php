@@ -12,6 +12,8 @@
         <thead>
           <th>ID da Conta</th>
           <th>Nome da Unidade</th>
+          <th>Vencimento do Cartão</th>
+          <th>Compras até</th>
           <th>Detalhes</th>
           <th>Ação</th>
         </thead>
@@ -20,8 +22,10 @@
           <tr>
             <td><?php echo $row->account_id;?></td>
             <td><?php echo $row->nome_unidade;?></td>
+            <td><?php echo $row->venc_cartao;?></td>
+            <td><?php echo $row->compras_ate;?></td>
             <td><a href="detalhes.php?id=<?php echo $row->account_id;?>&N=<?php echo $row->nome_unidade;?>">Ver detalhes</a>
-             <a title="graficos" class="pull-right" href="graficos.php?id=<?php echo $row->account_id;?>"><i class="fa fa-line-chart"></i></a></td>
+             <a target="_BLANK" title="graficos" class="pull-right" href="<?php echo $base_url;?>graficos/"><i class="fa fa-line-chart"></i></a></td>
             <td>
               <a class="btn btn-primary btn-sm" href="editar_conta.php?id=<?php echo $row->id_conta;?>">Editar</a>
               <a id="del" class="btn btn-danger btn-sm apaga" data-id="<?php echo $row->id_conta;?>" href="contas.php?del=<?php echo $row->id_conta;?>">Apagar</a>

@@ -23,7 +23,7 @@ if($conn){
 }
 
 $isso  = array('IEB','OralDents',' ','-','Oraldents---','---');
-$por   = array('','','','','','','');
+$por   = array('','',' ','','','','');
 
 $unidade = str_replace($isso,$por,$_GET['unidade']);
 

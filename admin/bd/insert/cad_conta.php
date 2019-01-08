@@ -9,10 +9,15 @@ $origem = 'nova_conta.php';
 
 $account_id   = $_POST['account_id'];
 $nome_unidade = $_POST['nome_unidade'];
+$venc_cartao  = $_POST['venc_cartao'];
+$compras_ate  = $_POST['compras_ate'];
+
 
 $dados = array(
     'account_id'=>$account_id,
-    'nome_unidade'=>$nome_unidade
+    'nome_unidade'=>$nome_unidade,
+    'venc_cartao'=>$venc_cartao,
+    'compras_ate'=>$compras_ate
 );
 
 $insert = QB::table('tbl_contas')->insert($dados);

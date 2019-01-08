@@ -215,12 +215,6 @@ if(!isset($_GET['data_ini'])){//caso não passe uma data seto o primeiro dia do 
         <tbody>
           <?php
 
-function TrocaCarac($carac){
-  $isso  = array(' ','Oraldents','-','IEB');
-  $por   = array('%20','','','');
-  $troca = str_replace($isso,$por,$carac);
-  return $troca; 
-}
             foreach($result_log as $row){?>
           <tr>
             <td><?php echo $row->account_id;?></td>

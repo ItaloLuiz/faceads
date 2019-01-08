@@ -83,3 +83,37 @@ $result_especifico_mes = $seleciona_especifico_mes->get();
 $to_json = json_encode($result_especifico_mes);
 echo $to_json;
 }
+
+function TrocaCarac($carac){
+    $isso  = array(' ','Oraldents','-','IEB','%20%20');
+    $por   = array('%20','','','','%20');
+    $troca = str_replace($isso,$por,$carac);
+    return trim($troca); 
+  }
+
+//cadastrar rateio no banco da IEB
+
+function Cad_rateio($campanha,$data,$base_url){
+    $post = [
+        'camp' => $campanha,
+        'dt_ini' => $data
+          
+    ];
+    
+    $ch = curl_init(''.$base_url.'rateio_ieb.php');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_VERBOSE, 1);
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+    $response = curl_exec($ch);
+    $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+    $header = substr($response, 0, $header_size);
+    $body = substr($response, $header_size);
+    curl_close($ch);
+    
+    if(!$response){
+        return 'erro função';
+    }else{
+        return $body;
+    }
+}

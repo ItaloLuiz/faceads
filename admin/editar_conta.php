@@ -45,6 +45,20 @@
             </div>
           </div>
           <div class="clearfix"></div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Vencimento do cartão</label>
+              <input type="number" min="1" name="venc_cartao" id="venc_cartao" class="form-control" value="<?php echo  $result_conta[0]->venc_cartao;?>" required>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Compras até</label>
+              <input type="number" min="1" name="compras_ate" id="compras_ate" class="form-control" value="<?php echo  $result_conta[0]->compras_ate;?>"  required>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          
           <div class="col-md-6">
             <div class="form-group">           
               <input type="submit" name="" id="" class="btn btn-primary" value="Atualizar">

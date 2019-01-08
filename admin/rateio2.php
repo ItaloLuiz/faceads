@@ -4,7 +4,7 @@
   include '../funcoes.php';
   include '../config.php';
 
-  $url_base = 'http://localhost/faceads/';
+  $url_base = $base_url;
 
   ?>
 <!DOCTYPE html>
@@ -62,11 +62,15 @@
                       <div class="form-group">
                         <label for="campanha">Campanhas</label>
                         <select  name="campanha" id="campanha" class="form-control" required="required">
+                        <option value="">selecione</option>
+                         ]
                           <?php
                             $get_id = $_GET['id'];
                             $get_data = $_GET['dt_ini'];
                             $pega_Campanha = file_get_contents(''.$url_base.'listCamp.php?id='.$get_id.'&data='.$get_data.'');
                             $to_array2 = json_decode($pega_Campanha,true);
+
+                            print_r($to_array2);
                             
                             $pega_id1 = $_GET['camp'];
                             foreach($to_array2 as $row){
@@ -106,9 +110,10 @@
                       
                       ?>
                     <div class="col-md-6">
-                    Periodo: <strong><?php echo $data_ini;?></strong> até <strong><?php echo $data_final;?>  </strong>
+                    Periodo: <strong><?php echo dataBr($data_ini);?></strong> até <strong><?php echo dataBr($data_final);?>  </strong>
 
                       <div class="row">
+
                         <div class="col-md-4">
                           <h4><b>Valor gasto</b></h4>
                           <h5>R$ <?php echo $spend;?></h5>
@@ -121,19 +126,25 @@
                           <h4><b>Rateio</b></h4>
                           <div id="rateio"></div>
                         </div>
+
+                        <div class="col-md-12">
+                         <!--<button type="button" class="btn btn-primary salva-rateio">Salvar Rateio</button>-->
+                         <a target="_BLANK" class="btn btn-primary" href="<?php echo $base_url;?>rateio_ieb.php?camp=<?php echo $_GET['camp'];?>&dt_ini=<?php echo $_GET['dt_ini'];?>">Salvar Rateio</a>
+                        
+                        </div>
+
                       </div>
+
+
                     </div>
                     <?php } ?>
                     <div class="clearfix"></div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Unidades</label>
-                        <?php
-                         
+                        <?php                         
                           $pega = QB::table('tbl_rateio')->where('cod_campanha','=',$_GET['camp']);
-                          $contar = $pega->count();
-
-                          
+                          $contar = $pega->count();                          
 
                           if($contar >=1){
                             $result   = $pega->get(); 
@@ -141,7 +152,6 @@
                             foreach($result as $row){
                               $get_unidades_camp .=  ','.$row->unidades_campanha;
                             }
-
                             $get_unidades_campanha = explode(",",$get_unidades_camp);
 
                             $lista = $get_unidades_campanha;
@@ -154,23 +164,17 @@
                           }
                                                 
                           $rateio = $spend/$conta_lista;
-                          $rateio = number_format($rateio,2,'.',',');
-
-                          function TrocaCarac($carac){
-                            $isso  = array(' ');
-                            $por   = array('%20');
-                            $troca = str_replace($isso,$por,$carac);
-                            return $troca; 
-                          }
+                          $rateio = number_format($rateio,2,'.',',');                       
                             
                             ?>
                         <select multiple name="unidades[]" id="unidades" class="form-control demo2" required="required">
-                          <?php 
+                                                   <?php 
                              $get_uni = TrocaCarac($_GET['N']);
                             $get_data = $_GET['dt_ini'];
                             //$url = file_get_contents(''.$url_base.'/getAccounts.php');
                             $url = file_get_contents($url_base.'admNew/getUnidades.php?unidade='.$get_uni);
-                            $to_array = json_decode($url,true);                            
+                            $to_array = json_decode($url,true);  
+                            print_r($to_array);                  
                             
                             foreach($to_array as $row){
                                //$account_id   = $row['account_id'];
@@ -199,7 +203,7 @@
                     </div>
                   </div>
                   <div class="clearfix"></div>
-                  <button type="submit" class="btn btn-primary">Salvar</button>
+                  <button type="submit" class="btn btn-primary">Gerar Rateio</button>
                 </form>
               </div>
             </div>
@@ -271,6 +275,25 @@
        $('#rateio').text('R$ <?php echo $rateio;?>');         
       
       });    
+    </script>
+    <script>
+    
+     $(document).ready(function(){   
+
+       $('.salva-rateio').click(function(){
+        var salva_rateio = $('.demo2').append('option:selected').val(); 
+        var parcela = '<?php echo $rateio;?>'; 
+        $.post('bd/insert/cad_rateio.php',{salva_rateio:salva_rateio,parcela:parcela},function(data){
+          alert(data);
+        });
+         
+         
+       });
+
+       
+     });
+    
+    
     </script>
   </body>
 </html>
